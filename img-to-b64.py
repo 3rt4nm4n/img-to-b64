@@ -7,12 +7,13 @@ import pyperclip
 # ---------------------------------SECTION I--------------------------------- #
 
 # get the image from the user
-path=input("Paste the complete path of the image:")
-image = Image.open(path)
+fpath=input("Paste the complete path of the image:")
+image = Image.open(fpath)
 
 # ---------------------------------SECTION II-------------------------------- #
 
 # get image width&height in pixel, image is considered to be in 1:1 ratio
+
 sizex=sizey=input("Type the size for the image (Enter for default 150px):")  
 if not sizex and not sizey:
     # if size is empty pass 150 as default sizes into the resize function
@@ -23,13 +24,15 @@ else:
     
 # --------------------------------SECTION III-------------------------------- #
 
+# split filename and extension name
+head,tail=os.path.splitext(fpath)
 # save resized image
-resizedimage.save(os.path.basename(path)+'resized.jpeg') 
+resizedimage.save(head+"_resized.jpeg") 
 
 # ---------------------------------SECTION IV-------------------------------- #
 
 # open image file
-with open(os.path.basename(path)+"resized.jpeg","rb") as img_file:
+with open(os.path.basename(fpath)+"resized.jpeg","rb") as img_file:
     #   encode image to base64 string
     base64_string = base64.b64encode(img_file.read())
     
