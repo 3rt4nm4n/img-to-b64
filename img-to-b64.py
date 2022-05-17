@@ -13,13 +13,13 @@ image = Image.open(path)
 # ---------------------------------SECTION II-------------------------------- #
 
 # get image width&height in pixel, image is considered to be in 1:1 ratio
-sizex=sizey=int(input("Type the size for the image (Enter for default 150px):"))  
+sizex=sizey=input("Type the size for the image (Enter for default 150px):")  
 if not sizex and not sizey:
     # if size is empty pass 150 as default sizes into the resize function
     resizedimage=image.resize((150,150))
 else:
     # if size is not empty, pass the value to the resize function
-    resizedimage=image.resize((sizex,sizey))
+    resizedimage=image.resize((int(sizex),int(sizey)))
     
 # --------------------------------SECTION III-------------------------------- #
 
